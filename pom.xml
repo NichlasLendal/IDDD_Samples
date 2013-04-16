@@ -1,0 +1,110 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>saasovation</groupId>
+    <artifactId>saasovation</artifactId>
+    <version>local</version>
+    <name>saasovation</name>
+    <inceptionYear>2013</inceptionYear>
+    <packaging>pom</packaging>
+
+    <repositories>
+        <repository>
+            <id>Maven Central</id>
+            <url>http://search.maven.org</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>Maven Central</id>
+            <url>http://search.maven.org</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <modules>
+        <module>iddd_common</module>
+        <!--<module>iddd_agilepm</module>-->
+        <!--module>iddd_collaboration</module-->
+        <!--module>iddd_identityaccess</module-->
+        <!--module>iddd_issuetrack</module-->
+    </modules>
+
+
+    <properties>
+        <log4j-version>1.2.9</log4j-version>
+        <spring.version>3.1.0.RELEASE</spring.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.8.2</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>1.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
+    <!--<reporting>-->
+
+    <!--</reporting>-->
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <encoding>UTF-8</encoding>
+                    <showDeprecation>true</showDeprecation>
+        			<showWarnings>true</showWarnings>
+			        <executable>${env.JAVA_7_HOME}/bin/javac</executable>
+			        <fork>true</fork>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.4.3</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                    </excludes>
+                        <jvm>${env.JAVA_7_HOME}/bin/java</jvm>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
